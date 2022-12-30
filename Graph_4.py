@@ -43,7 +43,6 @@ df.drop(df[df['LOCATION']=='System_Area'].index, axis= 0, inplace=True)
 df['VALUE']=1
 
 
-st.write("Mast Fail Points Distributed Along Rigs")
 
 Rig_List0= list(df.RIG_NAME.unique())
 Rig_List0.insert(0,'Total_Mast_Points')
@@ -52,7 +51,7 @@ for i in list(df.RIG_NAME.unique()):
     Rig_List_Mast.append(((df[(df['LOCATION_']=='Mast')& (df['FAIL/PASS']=='Fail')&(df['RIG_NAME']==i)]['VALUE'].sum())))
 fig_0=px.bar(x=Rig_List0, y=Rig_List_Mast)
 
-st.write("Rig Floor Fail Points Distributed Along Rigs")
+
 
 Rig_List1= list(df.RIG_NAME.unique())
 
@@ -65,7 +64,7 @@ for i in list(df.RIG_NAME.unique()):
 
 fig_1=px.bar(x=Rig_List1, y=Rig_List_Rig_Floor)
 
-st.write("Mud System Fail Points Distributed Along Rigs")
+
 
 
 Rig_List2= list(df.RIG_NAME.unique())
@@ -80,7 +79,7 @@ for i in list(df.RIG_NAME.unique()):
 fig_2=px.bar(x=Rig_List2, y=Rig_List_Mud_System)
  
 
-st.write("Engine Area Fail Points Distributed Along Rigs")
+
 
 Rig_List3= list(df.RIG_NAME.unique())
 
@@ -93,8 +92,8 @@ for i in list(df.RIG_NAME.unique()):
 
 fig_3=px.bar(x=Rig_List3, y=Rig_List_Engine_Area) ##
 
+ 
 
-st.write("Tank Area Fail Points Distributed Along Rigs")
 
 Loc_List4 = list(df.LOCATION_.unique())
 
@@ -109,7 +108,6 @@ for i in list(df.RIG_NAME.unique()):
  
 fig_4=px.bar(x=Rig_List4, y=Rig_List_Tank_Area) ##
 
-st.write("Sub_Structure Fail Points Distributed Along Rigs")
 
 Rig_List5= list(df.RIG_NAME.unique())
 
@@ -123,7 +121,7 @@ for i in list(df.RIG_NAME.unique()):
 fig_5= px.bar(x=Rig_List5, y=Rig_List_Sub_structure) ##
 
 
-st.write("Travelling Equipment Fail Points Distributed Along Rigs")
+
 
 
 Rig_List6= list(df.RIG_NAME.unique())
@@ -137,7 +135,6 @@ for i in list(df.RIG_NAME.unique()):
  
 fig_6=px.bar(x=Rig_List6, y=Rig_List_Travelling_Equipment) ##
 
-st.write("SCR Fail Points Distributed Along Rigs")
 
 Rig_List7= list(df.RIG_NAME.unique())
 
@@ -150,7 +147,7 @@ for i in list(df.RIG_NAME.unique()):
  
 fig_7=px.bar(x=Rig_List7, y=Rig_List_SCR) ##
 
-st.write("Main Camp Points Distributed Along Rigs")
+
 
 Rig_List8= list(df.RIG_NAME.unique())
 
@@ -162,7 +159,6 @@ for i in list(df.RIG_NAME.unique()):
     Rig_List_Main_Camp.append(((df[(df['LOCATION_']=='Main_Camp')& (df['FAIL/PASS']=='Fail')&(df['RIG_NAME']==i)]['VALUE'].sum()))) ##
  
 fig_8=px.bar(x=Rig_List8, y=Rig_List_Main_Camp) ##
-st.write("Fly Camp Points Distributed Along Rigs")
 
 
 Rig_List9= list(df.RIG_NAME.unique())
@@ -175,7 +171,6 @@ for i in list(df.RIG_NAME.unique()):
     Rig_List_Fly_camp.append(((df[(df['LOCATION_']=='Fly_camp')& (df['FAIL/PASS']=='Fail')&(df['RIG_NAME']==i)]['VALUE'].sum()))) ##
  
 fig_9=px.bar(x=Rig_List9, y=Rig_List_Fly_camp) ##
-st.write("Carrier Points Distributed Along Rigs")
 
 
 Rig_List10= list(df.RIG_NAME.unique())
@@ -189,7 +184,7 @@ for i in list(df.RIG_NAME.unique()):
  
 fig_10=px.bar(x=Rig_List10, y=Rig_List_Carrier) ##
 
-st.write("Workshop Points Distributed Along Rigs")
+
 
 Rig_List11= list(df.RIG_NAME.unique())
 
@@ -202,7 +197,6 @@ for i in list(df.RIG_NAME.unique()):
  
 fig_11=px.bar(x=Rig_List11, y=Rig_List_Workshop) ##
 
-st.write("Accumulator Points Distributed Along Rigs")
 
 
 Rig_List12= list(df.RIG_NAME.unique())
@@ -219,30 +213,45 @@ fig_12=px.bar(x=Rig_List12, y=Rig_List_Accumulator) ##
 
 
 #####
+st.write("Mast Fail Points Distributed Along Rigs")
 st.plotly_chart(fig_0, use_container_width=True)
 
+st.write("Rig Floor Fail Points Distributed Along Rigs")
 st.plotly_chart(fig_1, use_container_width=True)
 
+st.write("Mud System Fail Points Distributed Along Rigs")
 st.plotly_chart(fig_2, use_container_width=True)
 
+st.write("Engine Area Fail Points Distributed Along Rigs")
 st.plotly_chart(fig_3, use_container_width=True)
 
+
+st.write("Tank Area Fail Points Distributed Along Rigs")
 st.plotly_chart(fig_4, use_container_width=True)
 
+st.write("Sub_Structure Fail Points Distributed Along Rigs")
 st.plotly_chart(fig_5, use_container_width=True)
 
+st.write("Travelling Equipment Fail Points Distributed Along Rigs")
 st.plotly_chart(fig_6, use_container_width=True)
 
+st.write("SCR Fail Points Distributed Along Rigs")
 st.plotly_chart(fig_7, use_container_width=True)
 
+st.write("Main Camp Points Distributed Along Rigs")
 st.plotly_chart(fig_8, use_container_width=True)
 
+st.write("Fly Camp Points Distributed Along Rigs")
 st.plotly_chart(fig_9, use_container_width=True)
 
+st.write("Carrier Points Distributed Along Rigs")
 st.plotly_chart(fig_10, use_container_width=True)
 
+st.write("Workshop Points Distributed Along Rigs")
 st.plotly_chart(fig_11, use_container_width=True)
 
+
+st.write("Accumulator Points Distributed Along Rigs")
 st.plotly_chart(fig_12, use_container_width=True)
 
 # streamlit run "C:\\Users\\hp\\Desktop\\EPIS\\EDC_87\\EPIS_HOME.py" 
