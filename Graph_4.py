@@ -43,7 +43,7 @@ df.drop(df[df['LOCATION']=='System_Area'].index, axis= 0, inplace=True)
 df['VALUE']=1
 
 
-t.markdown(" <left>  <h1> KPC (DRLG/WO) Drops Analysis by Location </h1> </font> </left> </h1> ",
+t.markdown(" <center>  <h1> KPC (DRLG/WO) Drops Analysis by Location </h1> </font> </center> </h1> ",
             unsafe_allow_html=True)
 
 
