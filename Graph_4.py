@@ -14,8 +14,9 @@ image = np.array(im)
 st.image(image)
 
 
-st.markdown(" <center>  <h1> KPC (DRLG/WO) Drops Analysis </h1> </font> </center> </h1> ",
+st.markdown(" <center>  <h1> KPC (DRLG/WO) Drops Analysis by Location </h1> </font> </center> </h1> ",
             unsafe_allow_html=True)
+ 
  
 
 #####
@@ -40,6 +41,11 @@ df['LOCATION_']=df['LOCATION_'].str.replace('Sub-structure','Sub_structure')
 df.drop(df[df['LOCATION']=='System_Area'].index, axis= 0, inplace=True)
 
 df['VALUE']=1
+
+
+t.markdown(" <left>  <h1> KPC (DRLG/WO) Drops Analysis by Location </h1> </font> </left> </h1> ",
+            unsafe_allow_html=True)
+
 
 Rig_List0= list(df.RIG_NAME.unique())
 Rig_List0.insert(0,'Total_Mast_Points')
