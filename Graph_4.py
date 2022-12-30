@@ -43,8 +43,8 @@ df.drop(df[df['LOCATION']=='System_Area'].index, axis= 0, inplace=True)
 df['VALUE']=1
 
 
-st.markdown("""<style>.big-font {font-size:300px !important;}</style>""", unsafe_allow_html=True)
-st.markdown('<p class="big-font">Hello World !!</p>', unsafe_allow_html=True)
+st.markdown("""<style>.big-font {font-size:60px !important;}</style>""", unsafe_allow_html=True)
+st.markdown('<p class="big-font"> Mast Fail Points  !!</p>', unsafe_allow_html=True)
 
 Rig_List0= list(df.RIG_NAME.unique())
 Rig_List0.insert(0,'Total_Mast_Points')
@@ -53,6 +53,8 @@ for i in list(df.RIG_NAME.unique()):
     Rig_List_Mast.append(((df[(df['LOCATION_']=='Mast')& (df['FAIL/PASS']=='Fail')&(df['RIG_NAME']==i)]['VALUE'].sum())))
 fig_0=px.bar(x=Rig_List0, y=Rig_List_Mast)
 
+st.markdown("""<style>.big-font {font-size:60px !important;}</style>""", unsafe_allow_html=True)
+st.markdown('<p class="big-font"> Rig Floor Fail Points  !!</p>', unsafe_allow_html=True)
 
 Rig_List1= list(df.RIG_NAME.unique())
 
@@ -66,6 +68,8 @@ for i in list(df.RIG_NAME.unique()):
 fig_1=px.bar(x=Rig_List1, y=Rig_List_Rig_Floor)
 
 
+st.markdown("""<style>.big-font {font-size:60px !important;}</style>""", unsafe_allow_html=True)
+st.markdown('<p class="big-font"> Mud System Fail Points  !!</p>', unsafe_allow_html=True)
 
 Rig_List2= list(df.RIG_NAME.unique())
 
@@ -77,7 +81,9 @@ for i in list(df.RIG_NAME.unique()):
     Rig_List_Mud_System.append(((df[(df['LOCATION_']=='Mud_System')& (df['FAIL/PASS']=='Fail')&(df['RIG_NAME']==i)]['VALUE'].sum())))
 
 fig_2=px.bar(x=Rig_List2, y=Rig_List_Mud_System)
-
+ 
+st.markdown("""<style>.big-font {font-size:60px !important;}</style>""", unsafe_allow_html=True)
+st.markdown('<p class="big-font"> Engine Area Fail Points  !!</p>', unsafe_allow_html=True)
 
 
 Rig_List3= list(df.RIG_NAME.unique())
@@ -91,6 +97,8 @@ for i in list(df.RIG_NAME.unique()):
 
 fig_3=px.bar(x=Rig_List3, y=Rig_List_Engine_Area) ##
 
+st.markdown("""<style>.big-font {font-size:60px !important;}</style>""", unsafe_allow_html=True)
+st.markdown('<p class="big-font"> Tank Area Fail Points  !!</p>', unsafe_allow_html=True)
 
 
 Loc_List4 = list(df.LOCATION_.unique())
@@ -106,6 +114,9 @@ for i in list(df.RIG_NAME.unique()):
  
 fig_4=px.bar(x=Rig_List4, y=Rig_List_Tank_Area) ##
 
+st.markdown("""<style>.big-font {font-size:60px !important;}</style>""", unsafe_allow_html=True)
+st.markdown('<p class="big-font"> Sub_Structure Fail Points  !!</p>', unsafe_allow_html=True)
+
 Loc_List = list(df.LOCATION_.unique())
 
 Rig_List5= list(df.RIG_NAME.unique())
@@ -119,6 +130,11 @@ for i in list(df.RIG_NAME.unique()):
  
 fig_5= px.bar(x=Rig_List5, y=Rig_List_Sub_structure) ##
 
+
+st.markdown("""<style>.big-font {font-size:60px !important;}</style>""", unsafe_allow_html=True)
+st.markdown('<p class="big-font"> Travelling Equipments Fail Points  !!</p>', unsafe_allow_html=True)
+
+
 Rig_List6= list(df.RIG_NAME.unique())
 
 Rig_List6.insert(0,'Total_Travelling_Equipment_Points') ##
@@ -129,6 +145,9 @@ for i in list(df.RIG_NAME.unique()):
     Rig_List_Travelling_Equipment.append(((df[(df['LOCATION_']=='Travelling_Equipment')& (df['FAIL/PASS']=='Fail')&(df['RIG_NAME']==i)]['VALUE'].sum()))) ##
  
 fig_6=px.bar(x=Rig_List6, y=Rig_List_Travelling_Equipment) ##
+
+st.markdown("""<style>.big-font {font-size:60px !important;}</style>""", unsafe_allow_html=True)
+st.markdown('<p class="big-font"> SCR Fail Points  !!</p>', unsafe_allow_html=True)
 
 Rig_List7= list(df.RIG_NAME.unique())
 
@@ -141,6 +160,8 @@ for i in list(df.RIG_NAME.unique()):
  
 fig_7=px.bar(x=Rig_List7, y=Rig_List_SCR) ##
 
+st.markdown("""<style>.big-font {font-size:60px !important;}</style>""", unsafe_allow_html=True)
+st.markdown('<p class="big-font"> Main Camp Fail Points  !!</p>', unsafe_allow_html=True)
 
 Rig_List8= list(df.RIG_NAME.unique())
 
@@ -153,6 +174,8 @@ for i in list(df.RIG_NAME.unique()):
  
 fig_8=px.bar(x=Rig_List8, y=Rig_List_Main_Camp) ##
 
+st.markdown("""<style>.big-font {font-size:60px !important;}</style>""", unsafe_allow_html=True)
+st.markdown('<p class="big-font"> Fly Camp Fail Points  !!</p>', unsafe_allow_html=True)
 
 Rig_List9= list(df.RIG_NAME.unique())
 
@@ -165,6 +188,8 @@ for i in list(df.RIG_NAME.unique()):
  
 fig_9=px.bar(x=Rig_List9, y=Rig_List_Fly_camp) ##
 
+st.markdown("""<style>.big-font {font-size:60px !important;}</style>""", unsafe_allow_html=True)
+st.markdown('<p class="big-font"> Carrier Fail Points  !!</p>', unsafe_allow_html=True)
 
 Rig_List10= list(df.RIG_NAME.unique())
 
@@ -177,6 +202,8 @@ for i in list(df.RIG_NAME.unique()):
  
 fig_10=px.bar(x=Rig_List10, y=Rig_List_Carrier) ##
 
+st.markdown("""<style>.big-font {font-size:60px !important;}</style>""", unsafe_allow_html=True)
+st.markdown('<p class="big-font"> Workshop Fail Points  !!</p>', unsafe_allow_html=True)
 
 Rig_List11= list(df.RIG_NAME.unique())
 
@@ -189,6 +216,8 @@ for i in list(df.RIG_NAME.unique()):
  
 fig_11=px.bar(x=Rig_List11, y=Rig_List_Workshop) ##
 
+st.markdown("""<style>.big-font {font-size:60px !important;}</style>""", unsafe_allow_html=True)
+st.markdown('<p class="big-font"> Accumulator Fail Points  !!</p>', unsafe_allow_html=True)
 
 Rig_List12= list(df.RIG_NAME.unique())
 
