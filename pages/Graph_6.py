@@ -72,7 +72,7 @@ for i in Rig_List:
         
     fig.update_layout(title_text=f'Drops Analysis {i}', showlegend=True)
     fig.show()
-    st.plotly_chart(fig2, use_container_width=True)
+    st.plotly_chart(fig, use_container_width=True)
    
 #####
 
