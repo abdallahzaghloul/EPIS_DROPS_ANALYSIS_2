@@ -41,6 +41,19 @@ df.drop(df[df['LOCATION']=='System_Area'].index, axis= 0, inplace=True)
 
 df['VALUE']=1
 
+Loc_List= list(df.LOCATION_.unique())
+Total_Location_Fail = []
+
+for j in list(df.LOCATION_.unique()):
+    Total_Location_Fail.append(((df[(df['FAIL/PASS']=='Fail')&(df['LOCATION_']==j)]['VALUE'].sum())))
+        
+fig1=px.bar(df,x=Loc_List, y=Total_Location_Fail,labels={'x':'Total Fail Locations', 'y':'Total Fail Points'})
+for k in list(df.LOCATION_.unique()):
+    fig1.add_annotation(x=k,y=df[(df['FAIL/PASS']=='Fail')&(df['LOCATION_']==k)]['VALUE'].sum()+20, text=f"{df[(df['FAIL/PASS']=='Fail')&(df['LOCATION_']==k)]['VALUE'].sum()}", showarrow=False)
+
+fig1.update_layout(title_text=f'Total KPC (DRLG/WO) Rig`s Fail Points By Location ', showlegend=True)
+st.plotly_chart(fig1, use_container_width=True)
+
 Rig_List= list(df.RIG_NAME.unique())
 for i in Rig_List:
     Loc_List= list(df.LOCATION_.unique())
