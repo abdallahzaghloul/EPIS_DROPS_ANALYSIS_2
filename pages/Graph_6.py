@@ -41,6 +41,19 @@ df.drop(df[df['LOCATION']=='System_Area'].index, axis= 0, inplace=True)
 
 df['VALUE']=1
 
+Loc_List= list(df.LOCATION_.unique())
+Total_Location_Pass = []
+
+for jj in list(df.LOCATION_.unique()):
+    Total_Location_Pass.append(((df[(df['FAIL/PASS']=='Pass')&(df['LOCATION_']==jj)]['VALUE'].sum())))
+        
+fig2=px.bar(x=Loc_List, y=Total_Location_Pass,labels={'x':'Total Pass Location', 'y':'Total Pass Points'})
+for kk in list(df.LOCATION_.unique()):
+    fig2.add_annotation(x=kk,y=df[(df['FAIL/PASS']=='Pass')&(df['LOCATION_']==kk)]['VALUE'].sum()+30, text=f"{df[(df['FAIL/PASS']=='Pass')&(df['LOCATION_']==kk)]['VALUE'].sum()}", showarrow=False)
+
+fig2.update_layout(title_text=f'Total KPC (DRLG/WO) Rig`s Pass Points By Location ', showlegend=True)
+st.plotly_chart(fig2, use_container_width=True)
+
 Rig_List= list(df.RIG_NAME.unique())
 for i in Rig_List:
     Loc_List= list(df.LOCATION_.unique())
@@ -59,7 +72,7 @@ for i in Rig_List:
         
     fig.update_layout(title_text=f'Drops Analysis {i}', showlegend=True)
     fig.show()
-    st.plotly_chart(fig, use_container_width=True)
+    st.plotly_chart(fig2, use_container_width=True)
    
 #####
 
