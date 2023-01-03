@@ -45,15 +45,20 @@ Rig_List= list(df.RIG_NAME.unique())
 for i in Rig_List:
     Loc_List= list(df.LOCATION_.unique())
 
-    Loc_List.insert(0,'Total_Pass_Points')
-
-    Rig_List_Pass=[(((df[(df['RIG_NAME']==i)& (df['FAIL/PASS']=='Pass')]['VALUE'].sum())))]
+    Rig_List_Pass=[]
 
     for j in list(df.LOCATION_.unique()):
         Rig_List_Pass.append(((df[(df['FAIL/PASS']=='Pass')&(df['RIG_NAME']==i)&(df['LOCATION_']==j)]['VALUE'].sum())))
+        
 
     fig=px.bar(x=Loc_List, y=Rig_List_Pass,labels={'x':'Pass Points By Location', 'y':'Total Pass Points'})
+
+    for k in list(df.LOCATION_.unique()):
+           fig.add_annotation(x=k,y=df[(df['FAIL/PASS']=='Pass')&(df['RIG_NAME']==i)&(df['LOCATION_']==k)]['VALUE'].sum()+3, text=f"{df[(df['FAIL/PASS']=='Pass')&(df['RIG_NAME']==i)&(df['LOCATION_']==k)]['VALUE'].sum()}", showarrow=False)
+
+        
     fig.update_layout(title_text=f'Drops Analysis {i}', showlegend=True)
+    fig.show()
     st.plotly_chart(fig, use_container_width=True)
    
 #####
