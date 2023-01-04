@@ -14,9 +14,11 @@ image = np.array(im)
 st.image(image)
 
 
-st.markdown(" <center>  <h1> KPC (DRLG/WO) Drops Analysis by Location </h1> </font> </center> </h1> ",
+st.markdown(" <center>  <h1> KPC (DRLG/WO) Drops Analysis </h1> </font> </center> </h1> ",
             unsafe_allow_html=True)
  
+st.markdown(" <left>  <h1> KPC (DRLG/WO) Drops Analysis </h1> </font> </left> </h1> ",
+            unsafe_allow_html=True)
  
 
 #####
