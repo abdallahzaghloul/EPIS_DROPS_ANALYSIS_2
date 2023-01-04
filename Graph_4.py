@@ -14,13 +14,8 @@ image = np.array(im)
 st.image(image)
 
 
-st.markdown(" <center>  <h1> KPC (DRLG/WO) Drops Analysis </h1> </font> </center> </h1> ",
+st.markdown(" <center>  <h1> KPC (DRLG/WO) Drops Analysis (Location Fail Points with Rigs)</h1> </font> </center> </h1> ",
             unsafe_allow_html=True)
- 
-st.markdown(" <left>  <h1> KPC (DRLG/WO) Drops Analysis </h1> </font> </left> </h1> ",
-            unsafe_allow_html=True)
- 
-
 #####
 
 df = pd.read_excel("Book1.xlsx")
