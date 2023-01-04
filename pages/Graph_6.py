@@ -14,7 +14,7 @@ image = np.array(im)
 st.image(image)
 
 
-st.markdown(" <center>  <h1> KPC (DRLG/WO) Pass Points Analysis by Rig </h1> </font> </center> </h1> ",
+st.markdown(" <center>  <h1> KPC (DRLG/WO) Drops Analysis (Rig`s Pass Points with Location Contribution) </h1> </font> </center> </h1> ",
             unsafe_allow_html=True)
  
 
