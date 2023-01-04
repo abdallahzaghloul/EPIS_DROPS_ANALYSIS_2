@@ -15,7 +15,7 @@ st.image(image)
 
 
 
-st.markdown(" <center>  <h1> KPC (DRLG/WO) Drops Analysis (Detailed Location Pass Points with Rigs Contribution)</h1> </font> </center> </h1> ",
+st.markdown(" <center>  <h1> KPC (DRLG/WO) Drops Analysis (Detailed Location Pass Points with Rig`s Contribution)</h1> </font> </center> </h1> ",
             unsafe_allow_html=True)
 ##### 
 
