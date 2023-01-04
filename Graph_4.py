@@ -41,218 +41,23 @@ df['LOCATION_']=df['LOCATION_'].str.replace('Sub-structure','Sub_structure')
 df.drop(df[df['LOCATION']=='System_Area'].index, axis= 0, inplace=True)
 
 df['VALUE']=1
+Loc_List= list(df.LOCATION_.unique())
+Rig_List = list(df.RIG_NAME.unique())
 
+for i in Loc_List:
 
+    Rig_List_Fail=[]
 
-Rig_List0= list(df.RIG_NAME.unique())
-Rig_List0.insert(0,'Total_Mast_Points')
-Rig_List_Mast=[(((df[(df['LOCATION_']=='Mast')& (df['FAIL/PASS']=='Fail')]['VALUE'].sum())))]
-for i in list(df.RIG_NAME.unique()):
-    Rig_List_Mast.append(((df[(df['LOCATION_']=='Mast')& (df['FAIL/PASS']=='Fail')&(df['RIG_NAME']==i)]['VALUE'].sum())))
-fig_0=px.bar(x=Rig_List0, y=Rig_List_Mast)
+    for j in list(df.RIG_NAME.unique()):
+        Rig_List_Fail.append(((df[(df['FAIL/PASS']=='Fail')&(df['LOCATION_']==i)&(df['RIG_NAME']==j)]['VALUE'].sum())))
+        
+    fig=px.bar(x=Rig_List, y=Rig_List_Fail,labels={'x':f'KPC (DRLG/WO) Rigs{i} Fail Points ', 'y':f'Total {i} Fail Points'})
 
+    for k in list(df.RIG_NAME.unique()):
+           fig.add_annotation(x=k,y=df[(df['FAIL/PASS']=='Fail')&(df['RIG_NAME']==k)&(df['LOCATION_']==i)]['VALUE'].sum()+0.5, text=f"{df[(df['FAIL/PASS']=='Fail')&(df['RIG_NAME']==k)&(df['LOCATION_']==i)]['VALUE'].sum()}", showarrow=False)
 
-
-Rig_List1= list(df.RIG_NAME.unique())
-
-Rig_List1.insert(0,'Total_Rig_Floor_Points')
-
-Rig_List_Rig_Floor=[(((df[(df['LOCATION_']=='Rig_Floor')& (df['FAIL/PASS']=='Fail')]['VALUE'].sum())))]
-
-for i in list(df.RIG_NAME.unique()):
-    Rig_List_Rig_Floor.append(((df[(df['LOCATION_']=='Rig_Floor')& (df['FAIL/PASS']=='Fail')&(df['RIG_NAME']==i)]['VALUE'].sum())))
-
-fig_1=px.bar(x=Rig_List1, y=Rig_List_Rig_Floor)
-
-
-
-
-Rig_List2= list(df.RIG_NAME.unique())
-
-Rig_List2.insert(0,'Total_Mud_System_Points')
-
-Rig_List_Mud_System=[(((df[(df['LOCATION_']=='Mud_System')& (df['FAIL/PASS']=='Fail')]['VALUE'].sum())))]
-
-for i in list(df.RIG_NAME.unique()):
-    Rig_List_Mud_System.append(((df[(df['LOCATION_']=='Mud_System')& (df['FAIL/PASS']=='Fail')&(df['RIG_NAME']==i)]['VALUE'].sum())))
-
-fig_2=px.bar(x=Rig_List2, y=Rig_List_Mud_System)
- 
-
-
-
-Rig_List3= list(df.RIG_NAME.unique())
-
-Rig_List3.insert(0,'Total_Engine_Area_Points') ##
-
-Rig_List_Engine_Area=[(((df[(df['LOCATION_']=='Engine_Area')& (df['FAIL/PASS']=='Fail')]['VALUE'].sum())))] ##
-
-for i in list(df.RIG_NAME.unique()):
-    Rig_List_Engine_Area.append(((df[(df['LOCATION_']=='Engine_Area')& (df['FAIL/PASS']=='Fail')&(df['RIG_NAME']==i)]['VALUE'].sum()))) ##
-
-fig_3=px.bar(x=Rig_List3, y=Rig_List_Engine_Area) ##
-
- 
-
-
-Loc_List4 = list(df.LOCATION_.unique())
-
-Rig_List4= list(df.RIG_NAME.unique())
-
-Rig_List4.insert(0,'Total_Tank_Area_Points') ##
-
-Rig_List_Tank_Area=[(((df[(df['LOCATION_']=='Tank_Area')& (df['FAIL/PASS']=='Fail')]['VALUE'].sum())))] ##
-
-for i in list(df.RIG_NAME.unique()):
-    Rig_List_Tank_Area.append(((df[(df['LOCATION_']=='Tank_Area')& (df['FAIL/PASS']=='Fail')&(df['RIG_NAME']==i)]['VALUE'].sum()))) ##
- 
-fig_4=px.bar(x=Rig_List4, y=Rig_List_Tank_Area) ##
-
-
-Rig_List5= list(df.RIG_NAME.unique())
-
-Rig_List5.insert(0,'Total_Sub_Structure_Points') ##
-
-Rig_List_Sub_structure=[(((df[(df['LOCATION_']=='Sub_structure')& (df['FAIL/PASS']=='Fail')]['VALUE'].sum())))] ##
-
-for i in list(df.RIG_NAME.unique()):
-    Rig_List_Sub_structure.append(((df[(df['LOCATION_']=='Sub_structure')& (df['FAIL/PASS']=='Fail')&(df['RIG_NAME']==i)]['VALUE'].sum()))) ##
- 
-fig_5= px.bar(x=Rig_List5, y=Rig_List_Sub_structure) ##
-
-
-
-
-
-Rig_List6= list(df.RIG_NAME.unique())
-
-Rig_List6.insert(0,'Total_Travelling_Equipment_Points') ##
-
-Rig_List_Travelling_Equipment=[(((df[(df['LOCATION_']=='Travelling_Equipment')& (df['FAIL/PASS']=='Fail')]['VALUE'].sum())))] ##
-
-for i in list(df.RIG_NAME.unique()):
-    Rig_List_Travelling_Equipment.append(((df[(df['LOCATION_']=='Travelling_Equipment')& (df['FAIL/PASS']=='Fail')&(df['RIG_NAME']==i)]['VALUE'].sum()))) ##
- 
-fig_6=px.bar(x=Rig_List6, y=Rig_List_Travelling_Equipment) ##
-
-
-Rig_List7= list(df.RIG_NAME.unique())
-
-Rig_List7.insert(0,'Total_SCR_Points') ##
-
-Rig_List_SCR=[(((df[(df['LOCATION_']=='SCR')& (df['FAIL/PASS']=='Fail')]['VALUE'].sum())))] ##
-
-for i in list(df.RIG_NAME.unique()):
-    Rig_List_SCR.append(((df[(df['LOCATION_']=='SCR')& (df['FAIL/PASS']=='Fail')&(df['RIG_NAME']==i)]['VALUE'].sum()))) ##
- 
-fig_7=px.bar(x=Rig_List7, y=Rig_List_SCR) ##
-
-
-
-Rig_List8= list(df.RIG_NAME.unique())
-
-Rig_List8.insert(0,'Total_Main_Camp_Points') ##
-
-Rig_List_Main_Camp=[(((df[(df['LOCATION_']=='Main_Camp')& (df['FAIL/PASS']=='Fail')]['VALUE'].sum())))] ##
-
-for i in list(df.RIG_NAME.unique()):
-    Rig_List_Main_Camp.append(((df[(df['LOCATION_']=='Main_Camp')& (df['FAIL/PASS']=='Fail')&(df['RIG_NAME']==i)]['VALUE'].sum()))) ##
- 
-fig_8=px.bar(x=Rig_List8, y=Rig_List_Main_Camp) ##
-
-
-Rig_List9= list(df.RIG_NAME.unique())
-
-Rig_List9.insert(0,'Total_Fly_camp_Points') ##
-
-Rig_List_Fly_camp=[(((df[(df['LOCATION_']=='Fly_camp')& (df['FAIL/PASS']=='Fail')]['VALUE'].sum())))] ##
-
-for i in list(df.RIG_NAME.unique()):
-    Rig_List_Fly_camp.append(((df[(df['LOCATION_']=='Fly_camp')& (df['FAIL/PASS']=='Fail')&(df['RIG_NAME']==i)]['VALUE'].sum()))) ##
- 
-fig_9=px.bar(x=Rig_List9, y=Rig_List_Fly_camp) ##
-
-
-Rig_List10= list(df.RIG_NAME.unique())
-
-Rig_List10.insert(0,'Total_Carrier_Points') ##
-
-Rig_List_Carrier=[(((df[(df['LOCATION_']=='Carrier')& (df['FAIL/PASS']=='Fail')]['VALUE'].sum())))] ##
-
-for i in list(df.RIG_NAME.unique()):
-    Rig_List_Carrier.append(((df[(df['LOCATION_']=='Carrier')& (df['FAIL/PASS']=='Fail')&(df['RIG_NAME']==i)]['VALUE'].sum()))) ##
- 
-fig_10=px.bar(x=Rig_List10, y=Rig_List_Carrier) ##
-
-
-
-Rig_List11= list(df.RIG_NAME.unique())
-
-Rig_List11.insert(0,'Total_Workshop_Points') ##
-
-Rig_List_Workshop=[(((df[(df['LOCATION_']=='Workshop')& (df['FAIL/PASS']=='Fail')]['VALUE'].sum())))] ##
-
-for i in list(df.RIG_NAME.unique()):
-    Rig_List_Workshop.append(((df[(df['LOCATION_']=='Workshop')& (df['FAIL/PASS']=='Fail')&(df['RIG_NAME']==i)]['VALUE'].sum()))) ##
- 
-fig_11=px.bar(x=Rig_List11, y=Rig_List_Workshop) ##
-
-
-
-Rig_List12= list(df.RIG_NAME.unique())
-
-Rig_List12.insert(0,'Total_Accumulator_Points') ##
-
-Rig_List_Accumulator=[(((df[(df['LOCATION_']=='Accumulator')& (df['FAIL/PASS']=='Fail')]['VALUE'].sum())))] ##
-
-for i in list(df.RIG_NAME.unique()):
-    Rig_List_Accumulator.append(((df[(df['LOCATION_']=='Accumulator')& (df['FAIL/PASS']=='Fail')&(df['RIG_NAME']==i)]['VALUE'].sum()))) ##
- 
-fig_12=px.bar(x=Rig_List12, y=Rig_List_Accumulator) ##
-
-
-
-#####
-st.write("Mast Fail Points Distributed Along Rigs")
-st.plotly_chart(fig_0, use_container_width=True)
-
-st.write("Rig Floor Fail Points Distributed Along Rigs")
-st.plotly_chart(fig_1, use_container_width=True)
-
-st.write("Mud System Fail Points Distributed Along Rigs")
-st.plotly_chart(fig_2, use_container_width=True)
-
-st.write("Engine Area Fail Points Distributed Along Rigs")
-st.plotly_chart(fig_3, use_container_width=True)
-
-
-st.write("Tank Area Fail Points Distributed Along Rigs")
-st.plotly_chart(fig_4, use_container_width=True)
-
-st.write("Sub_Structure Fail Points Distributed Along Rigs")
-st.plotly_chart(fig_5, use_container_width=True)
-
-st.write("Travelling Equipment Fail Points Distributed Along Rigs")
-st.plotly_chart(fig_6, use_container_width=True)
-
-st.write("SCR Fail Points Distributed Along Rigs")
-st.plotly_chart(fig_7, use_container_width=True)
-
-st.write("Main Camp Points Distributed Along Rigs")
-st.plotly_chart(fig_8, use_container_width=True)
-
-st.write("Fly Camp Points Distributed Along Rigs")
-st.plotly_chart(fig_9, use_container_width=True)
-
-st.write("Carrier Points Distributed Along Rigs")
-st.plotly_chart(fig_10, use_container_width=True)
-
-st.write("Workshop Points Distributed Along Rigs")
-st.plotly_chart(fig_11, use_container_width=True)
-
-
-st.write("Accumulator Points Distributed Along Rigs")
-st.plotly_chart(fig_12, use_container_width=True)
+    fig.update_layout(title_text=f"{df[(df['FAIL/PASS']=='Fail')&(df['LOCATION_']==i)]['VALUE'].sum()} Fail Points with Rig`s Contribution", showlegend=False)
+    st.plotly_chart(fig, use_container_width=True)
 
 # streamlit run "C:\\Users\\hp\\Desktop\\EPIS\\EDC_87\\EPIS_HOME.py" 
 
