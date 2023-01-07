@@ -33,7 +33,7 @@ df['LOCATION_']=df['LOCATION_'].str.replace('MI_SWACO_UNIT','Engine_Area')
 df['LOCATION_']=df['LOCATION_'].str.replace('Dog_House','Rig_Floor')
 df['LOCATION_']=df['LOCATION_'].str.replace('Fire_Pump','Tank_Area')
 df['LOCATION_']=df['LOCATION_'].str.replace('Engine_Room','Engine_Area')
-df['LOCATION_']=df['LOCATION_'].str.replace('Pump_Room','Engine_Area')
+df['LOCATION_']=df['LOCATION_'].str.replace('Pump_Room','Engine_Area').str.replace('SCR','Engine_Area').str.replace('Power_House','Engine_Area')
 df['LOCATION_']=df['LOCATION_'].str.replace('Travelling_Block','Travelling_Equipment').str.replace('Crown_Block','Travelling_Equipment')
 df['LOCATION_']=df['LOCATION_'].str.replace('Sub-structure','Sub_structure')
 
